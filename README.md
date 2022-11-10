@@ -10,6 +10,7 @@ The co2_emission.ipynb file contains:
 - EDA, feature importance analysis
 - Model selection process and parameter tuning
 
+### Installing dependencies
 To reproduce this project on your system, you need to download the code and install the dependencies using pipenv. 
 
 If you don't have pipenv installed, you can just install it using the following command:
@@ -32,8 +33,9 @@ To host the service locally, just run the predict.py file:
 ```
 python predict.py
 ```
+### Making a prediction
 Finally, you can use the model to make a prediction by creating a script/notebook with the example code below. Pay attention for the type of each sample. The co2_prediction.ipynb contains this code, and the serving.png image shows an screenshot of an interaction with the model:
-```
+```python
 import requests
 
 vehicle = {
@@ -54,3 +56,13 @@ print(result)
 ```
 
 The co2_emission.ipynb contains information about the possible entries for each feature. You can also find this same info in the canadian government [website](https://open.canada.ca/data/en/dataset/98f1a129-f628-4ce4-b24d-6f16bf24dd64). 
+
+### Deployment using Docker
+You can deploy this file using docker. First, you need to create a docker image using the Dockerfile. This can be done by running this command in the project folder:
+```
+docker build -t co2_emission .
+```
+Now, just use the command below and the model will be served in your local host, and you can make a prediction in the same way as explained above. 
+```
+docker run -it -p 9696:9696 co2_prediction:latest
+```
