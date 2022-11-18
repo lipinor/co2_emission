@@ -17,7 +17,7 @@ If you don't have pipenv installed, you can just install it using the following 
 ```
 pip install pipenv
 ```
-With pipenv, you can install create a virtual environment with the needed packages installed with the command:
+With pipenv, you can create a virtual environment with the needed packages installed using the following command while in the project folder:
 ```
 pipenv install
 ```
